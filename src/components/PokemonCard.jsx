@@ -1,17 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const PokemonCard = ({ pokemonList }) => {
-  let pokemon = pokemonList[0];
-  if (Math.random() > 0.5) {
-    pokemon = pokemonList[1];
-  }
-  PokemonCard.propTypes = {
-    pokemonList: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      imgSrc: PropTypes.string.isRequired,
-    }).isRequired,
-  };
+const PokemonCard = ({ pokemonList, pokemonIndex, setPokemonIndex }) => {
+  let pokemon = pokemonList[pokemonIndex];
 
   return (
     <div>
@@ -23,6 +14,24 @@ const PokemonCard = ({ pokemonList }) => {
         )}
         <figcaption>{pokemon.name}</figcaption>
       </figure>
+      <button
+        onClick={() =>
+          pokemonIndex === 0
+            ? setPokemonIndex(pokemonIndex)
+            : setPokemonIndex(pokemonIndex - 1)
+        }
+      >
+        Precedent
+      </button>
+      <button
+        onClick={() =>
+          pokemonList.length - 1 !== pokemonIndex
+            ? setPokemonIndex(pokemonIndex + 1)
+            : setPokemonIndex(0)
+        }
+      >
+        Suivant
+      </button>
     </div>
   );
 };
