@@ -6,12 +6,6 @@ const PokemonCard = ({ pokemonList }) => {
   if (Math.random() > 0.5) {
     pokemon = pokemonList[1];
   }
-  PokemonCard.propTypes = {
-    pokemonList: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      imgSrc: PropTypes.string.isRequired,
-    }).isRequired,
-  };
 
   return (
     <div>
@@ -25,6 +19,15 @@ const PokemonCard = ({ pokemonList }) => {
       </figure>
     </div>
   );
+};
+
+PokemonCard.propTypes = {
+  pokemonList: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      imgSrc: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
 };
 
 export default PokemonCard;
