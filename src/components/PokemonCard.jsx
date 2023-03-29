@@ -14,24 +14,17 @@ const PokemonCard = ({ pokemonList, pokemonIndex, setPokemonIndex }) => {
         )}
         <figcaption>{pokemon.name}</figcaption>
       </figure>
-      <button
-        onClick={() =>
-          pokemonIndex === 0
-            ? setPokemonIndex(pokemonIndex)
-            : setPokemonIndex(pokemonIndex - 1)
-        }
-      >
-        Precedent
-      </button>
-      <button
-        onClick={() =>
-          pokemonList.length - 1 !== pokemonIndex
-            ? setPokemonIndex(pokemonIndex + 1)
-            : setPokemonIndex(0)
-        }
-      >
-        Suivant
-      </button>
+      {pokemonIndex !== 0 ? (
+        <button onClick={() => setPokemonIndex(pokemonIndex - 1)}>
+          Precedent
+        </button>
+      ) : null}
+
+      {pokemonList.length - 1 !== pokemonIndex ? (
+        <button onClick={() => setPokemonIndex(pokemonIndex + 1)}>
+          Suivant
+        </button>
+      ) : null}
     </div>
   );
 };
