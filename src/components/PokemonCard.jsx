@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const PokemonCard = ({ pokemonList, pokemonIndex, setPokemonIndex }) => {
+const PokemonCard = ({ pokemonList, pokemonIndex }) => {
   let pokemon = pokemonList[pokemonIndex];
 
   return (
@@ -14,17 +14,6 @@ const PokemonCard = ({ pokemonList, pokemonIndex, setPokemonIndex }) => {
         )}
         <figcaption>{pokemon.name}</figcaption>
       </figure>
-      {pokemonIndex !== 0 ? (
-        <button onClick={() => setPokemonIndex(pokemonIndex - 1)}>
-          Precedent
-        </button>
-      ) : null}
-
-      {pokemonList.length - 1 !== pokemonIndex ? (
-        <button onClick={() => setPokemonIndex(pokemonIndex + 1)}>
-          Suivant
-        </button>
-      ) : null}
     </div>
   );
 };
